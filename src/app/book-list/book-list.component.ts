@@ -17,9 +17,6 @@ export class BookListComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching books:', error);
-      },
-      complete: () => {
-        console.log('Book fetching complete');
       }
     });
   }

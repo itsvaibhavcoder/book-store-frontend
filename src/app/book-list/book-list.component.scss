@@ -1,0 +1,12 @@
+.book-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    app-book-card {
+      flex: 1 1 25%;  
+      max-width: 24%;
+      margin: 10px;   
+    }
+  }
+  
