@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     NavbarComponent,
     BookListComponent,
     BookCardComponent,
-    ViewBookComponent
+    ViewBookComponent,
+    CartComponent
   ],
   imports: [
     HttpClientModule,
