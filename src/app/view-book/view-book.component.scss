@@ -1,40 +1,121 @@
-
-
 .view-book-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin: 10px;
+  width: 600px;
+  height: 503px;
+  margin-left: 80px;
+}
+
+.book-image-container {
+  flex: 1;
+  text-align: center;
+  margin-right: 10px;
+
+  .book-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 5px;
+  }
+
+  .action-buttons {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
-    padding: 20px;
+
+    .btn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+
+      &.add-to-bag {
+        background-color: #007bff;
+        margin-right: 10px;
+      }
+
+      &.wishlist {
+        background-color: #28a745;
+      }
+    }
   }
-  
-  .book-image-container {
-    flex: 1;
-    text-align: center;
-    margin-right: 20px;
+}
+
+.book-details {
+  flex: 2;
+  text-align: left;
+  padding: 20px;
+  margin-left: 12px;
+  height: 477px;
+
+  h2 {
+    margin-bottom: 10px;
   }
-  
-  .book-details {
-    flex: 2;
-    text-align: left;
+
+  h4 {
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .book-price, .book-discount-price {
+    font-size: 18px;
+
+    &.book-discount-price {
+      color: green;
+    }
+  }
+
+  h3 {
+    margin-top: 10px;
+  }
+
+  .review-container {
     border: 1px solid #ddd;
-    padding: 20px;
     border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .review-avatar {
+        border-radius: 50%;
+        margin-right: 10px;
+        width: 40px;
+      }
+
+      .reviewer-info {
+        strong {
+          font-size: 16px;
+        }
+
+        .rating {
+          color: #f39c12;
+        }
+
+        span {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+
+    .review-body {
+      font-size: 14px;
+      line-height: 1.5;
+    }
   }
-  
-  .button {
-    margin-right: 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .add-to-bag {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .wishlist {
-    background-color: #28a745;
-    color: white;
-  }
-  
+}
