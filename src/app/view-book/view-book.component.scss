@@ -1,0 +1,40 @@
+
+
+.view-book-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .book-image-container {
+    flex: 1;
+    text-align: center;
+    margin-right: 20px;
+  }
+  
+  .book-details {
+    flex: 2;
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-to-bag {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .wishlist {
+    background-color: #28a745;
+    color: white;
+  }
+  
