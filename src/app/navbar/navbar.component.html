@@ -1,0 +1,29 @@
+<div class="top-nav-container" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 100%;">
+    <mat-toolbar style="background-color: #A03037; width: 100%;">
+        <div class="logo-name" style="display: flex; justify-content: space-between; align-items: center; width: 15%;">
+            <div class="image">
+                <img src="../../assets/edited-open-book.png" alt="open book" width="70" height="52">
+            </div>
+            <div class="mat-title">Bookstore</div>
+        </div>
+        <div class="search" style="display: flex; justify-content: center; align-items: center; width: 60%;">
+            <button mat-icon-button style="display: none;">
+                <mat-icon>search</mat-icon>
+            </button>
+            <input matTooltip="Search" placeholder="Search" class="input" />
+        </div>
+        <div class="icons" style="display: flex; justify-content: space-between; align-items: center; width: 20%;">
+            <button mat-icon-button matTooltip="Profile">
+                <mat-icon class="mat-icon-profile" matBadgeColor="primary" matBadgeSize="small">
+                    account_circle
+                </mat-icon>
+            </button>
+            <div id="cart" style="display: flex;">
+                <button mat-icon-button matTooltip="Cart">
+                    <mat-icon class="mat-icon-cart" matBadgeColor="primary" matBadgeSize="small">
+                        add_shopping_cart</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+</div>
