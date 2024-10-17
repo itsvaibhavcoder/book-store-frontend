@@ -11,7 +11,8 @@ import { ViewBookComponent } from './view-book/view-book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +21,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { CartComponent } from './cart/cart.component';
     BookListComponent,
     BookCardComponent,
     ViewBookComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     HttpClientModule,
@@ -42,7 +47,9 @@ import { CartComponent } from './cart/cart.component';
     MatTooltipModule,
     MatMenuModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
