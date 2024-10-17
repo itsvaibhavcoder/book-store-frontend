@@ -1,69 +1,17 @@
-<!-- <div class="view-book-container" style="display: flex; justify-content: center; padding: 20px; border: 1px solid #ddd; margin: 10px; width: 600px; height: 503px;">
-    <div class="book-image-container" style="flex: 1; text-align: center; margin-right: 10px;">
-      <img
-        [src]="book.bookImage"
-        alt="{{ book.bookName }}"
-        style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid black; padding: 5px;"
-      />
-      
-      <div style="margin-top: 15px; display: flex; justify-content: center;">
-        <button style="margin-right: 10px; padding: 10px 15px; border: none; background-color: #007bff; color: white; border-radius: 5px; cursor: pointer;">
-          Add to Bag
-        </button>
-        <button style="padding: 10px 15px; border: none; background-color: #28a745; color: white; border-radius: 5px; cursor: pointer;">
-          Wishlist
-        </button>
-      </div>
-    </div>
-  
-    <div class="book-details" style="flex: 2; text-align: left; padding: 20px; margin-left: 12px; height: 477px;">
-      <h2 style="margin-bottom: 10px;">{{ book.bookName }}</h2>
-      <h4 style="color: #666; margin-bottom: 20px;">by {{ book.author }}</h4>
-      <p style="margin-bottom: 20px; line-height: 1.5;">{{ book.description }}</p>
-      <div class="book-price" style="font-size: 18px; margin-bottom: 20px;">
-        <strong>Price: Rs. {{ book.price }}</strong>
-      </div>
-      <div class="book-discount-price" *ngIf="book.discountPrice" style="font-size: 18px; color: green;">
-        <strong>Discount Price: Rs. {{ book.discountPrice }}</strong>
-      </div>
-      <h3 style="margin-top: 10px">Reviews</h3>
-      <div class="review-container" style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin: 10px 0; background-color: #f9f9f9;">
-        
-        <div class="review-header" style="display: flex; align-items: center; margin-bottom: 10px;">
-            <img src="https://avatars.githubusercontent.com/u/104653559?v=4" alt="User Avatar" style="border-radius: 50%; margin-right: 10px; width: 40px;">
-            <div>
-                <strong style="font-size: 16px;">Vaibhav Sukale</strong>
-                <div style="color: #f39c12;">
-                    <span class="material-icons">star</span>
-                    <span class="material-icons">star</span>
-                    <span class="material-icons">star</span>
-                    <span class="material-icons">star</span>
-                    <span class="material-icons">star_half</span>
-                </div>
-                <span style="font-size: 14px; color: #666;">(4.5/5)</span>
-            </div>
-        </div>
-        <div class="review-body" style="font-size: 14px; line-height: 1.5;">
-            <p>This book was an incredible read! The story was gripping and the characters were well-developed. I couldn't put it down!</p>
-        </div>
-    </div>
-    
-    </div>
-</div>
-   -->
-
-
-   <div class="view-book-container">
+<div class="view-book-container">
     <div class="book-image-container">
-      <img
-        [src]="book.bookImage"
-        alt="{{ book.bookName }}"
-        class="book-image"
-      />
+      <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
   
       <div class="action-buttons">
-        <button class="btn add-to-bag">Add to Bag</button>
-        <button class="btn wishlist">Wishlist</button>
+        <button class="btn add-to-bag" (click)="addToBag()" *ngIf="!isInBag">Add to Bag</button>
+        <div *ngIf="isInBag" class="quantity-controls">
+          <button (click)="decrementQuantity()">-</button>
+          <span>{{ quantityToBuy }}</span>
+          <button (click)="incrementQuantity()">+</button>
+        </div>
+        <button class="btn wishlist" (click)="toggleWishlist()">
+          {{ isInWishlist ? 'Added to Wishlist' : 'Add to Wishlist' }}
+        </button>
       </div>
     </div>
   
@@ -77,7 +25,6 @@
       <div class="book-discount-price" *ngIf="book.discountPrice">
         <strong>Discount Price: Rs. {{ book.discountPrice }}</strong>
       </div>
-  
       <h3>Reviews</h3>
       <div class="review-container">
         <div class="review-header">

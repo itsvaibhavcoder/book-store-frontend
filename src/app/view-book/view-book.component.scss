@@ -28,19 +28,29 @@
     justify-content: center;
 
     .btn {
-      padding: 10px 15px;
+      padding: 5px 10px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       color: white;
-
+      margin-left: 20px;
       &.add-to-bag {
-        background-color: #007bff;
+        background-color: #A03037;
         margin-right: 10px;
+        font-size: 10px;
+        width: 74px;
       }
-
+      &.added-to-bag {
+        background-color: #28a745; 
+        color: white;
+        font-weight: bold;
+        border: 2px solid #28a745;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        pointer-events: none;
+      }
       &.wishlist {
-        background-color: #28a745;
+        background-color: black;
+        font-size: 10px;
       }
     }
   }
@@ -118,4 +128,36 @@
       line-height: 1.5;
     }
   }
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center; 
+  margin-top: 10px; 
+}
+
+button {
+  background-color: #bfd8c0; 
+  color: white; 
+  border: none; 
+  padding: 3px 7px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  transition: background-color 0.3s; 
+}
+
+button:hover {
+  background-color: #45a049; 
+}
+
+span {
+  margin: 0 10px; 
+  font-size: 18px; 
+  font-weight: bold; 
+}
+
+button:disabled {
+  background-color: #ccc; 
+  cursor: not-allowed; 
 }
