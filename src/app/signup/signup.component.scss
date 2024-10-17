@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    height: 90vh;
+    justify-content: center; 
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto; 
+}
+  
+  .left-section {
+    width: 624px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 391px;
+    border-radius: 6px;
+    opacity: 1;
+    border: 1px solid #E4E4E4;
+    flex-direction: column;
+  }
+  h3{
+    margin-top: 26px;
+    font-weight: bold;
+  }
+  
+  .left-section img {
+    max-width: 100%;
+    height: 271px;
+    border-radius: 50%;
+  }
+  
+  .right-section {
+    width: 389px;
+    height: 463px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 5px 15px #00000029;
+    border: 1px solid #E4E4E4;
+    border-radius: 6px;
+    opacity: 1;
+    margin-right: 36px;
+    z-index: 2;
+  }
+  
+  mat-card {
+    width: 100%;
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .signup{
+    margin-left: 2px;
+    margin-left: 76px;
+  }
+  
+  mat-form-field.full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .mat-flat-button {
+    width: 100%;
+    background-color: #A03037;
+  }
+  button.forget-password {
+    
+    text-transform: none;
+  }
+  
