@@ -23,6 +23,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { LoginSignupComponent } from './login-signup/login-signup.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SignupComponent } from './signup/signup.component';
     ViewBookComponent,
     CartComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LoginSignupComponent
   ],
   imports: [
     HttpClientModule,
