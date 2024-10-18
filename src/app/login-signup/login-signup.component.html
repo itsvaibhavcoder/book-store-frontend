@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="left-section">
+      <img src="../../assets/book-store-login.png" alt="Login Image" />
+      <h3>ONLINE BOOK SHOPPING</h3>
+    </div>
+  
+    <div class="right-section">
+      <mat-card>
+        <div class="form-header">
+          <a (click)="toggleForm('login')" [class.active]="isLoginForm">LOGIN</a>
+          <a (click)="toggleForm('signup')" [class.active]="!isLoginForm" class="signup">SIGNUP</a>
+        </div>
+  
+        <ng-container *ngIf="isLoginForm">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" required />
+          </mat-form-field>
+  
+          <div class="button-group">
+            <button mat-button class="forget-password">Forgot Password</button>
+            <button mat-flat-button color="primary">Login</button>
+          </div>
+        </ng-container>
+  
+        <ng-container *ngIf="!isLoginForm">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" required />
+          </mat-form-field>
+  
+          <div class="button-group">
+            <button mat-flat-button color="primary">Sign Up</button>
+          </div>
+        </ng-container>
+      </mat-card>
+    </div>
+  </div>
+  
