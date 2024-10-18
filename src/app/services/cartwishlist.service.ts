@@ -1,51 +1,89 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartWishlistService {
-  private cart: any[] = [];
-  private wishlist: any[] = [];
+  private cart = new BehaviorSubject<any[]>([]);
+  private wishlist = new BehaviorSubject<any[]>([]);
 
   constructor() {}
 
-  addToCart(book: any, quantity: number = 1): void {
-    const existingItem = this.cart.find((item) => item._id === book._id);
+  // addToCart(book: any, quantity: number = 1): void {
+  //   let currentCart = this.cart.getValue();
+  //   const existingItem = currentCart.find((item) => item._id === book._id);
+
+  //   if (existingItem) {
+  //     existingItem.quantity += quantity;
+  //   } else {
+  //     currentCart.push({ ...book, quantity });
+  //   }
+  //   this.cart.next(currentCart);
+  // }
+
+  addToCart(book: any, quantityToBuy: number = 1): void {
+    let currentCart = [...this.cart.getValue()]; 
+    const existingItem = currentCart.find((item) => item._id === book._id);
+  
     if (existingItem) {
-      existingItem.quantity += quantity;
+  
+      const updatedItem = { ...existingItem, quantityToBuy: existingItem.quantityToBuy + quantityToBuy };
+      currentCart = currentCart.map(item => item._id === book._id ? updatedItem : item);
     } else {
-      this.cart.push({ ...book, quantity });
+    
+      currentCart.push({ ...book, quantityToBuy });
     }
-    console.log('Cart:', this.cart);
+  
+    this.cart.next(currentCart);
+    console.log('Updated Cart:', currentCart);
+  }
+  
+  updateQuantity(bookId: string, quantityToBuy: number): void {
+    let currentCart = this.cart.getValue();
+    const existingItem = currentCart.find((item) => item._id === bookId);
+
+    if (existingItem) {
+      existingItem.quantityToBuy = quantityToBuy;
+    }
+
+    this.cart.next(currentCart);
   }
 
+
   removeFromCart(bookId: string): void {
-    this.cart = this.cart.filter((item) => item._id !== bookId);
+    let currentCart = this.cart.getValue();
+    currentCart = currentCart.filter((item) => item._id !== bookId);
+    this.cart.next(currentCart);
   }
 
   toggleWishlist(book: any): void {
-    const existingItem = this.wishlist.find((item) => item._id === book._id);
+    let currentWishlist = this.wishlist.getValue();
+    const existingItem = currentWishlist.find((item) => item._id === book._id);
+
     if (existingItem) {
-      this.wishlist = this.wishlist.filter((item) => item._id !== book._id);
+      currentWishlist = currentWishlist.filter((item) => item._id !== book._id);
     } else {
-      this.wishlist.push(book);
+      currentWishlist.push(book);
     }
-    console.log('Wishlist:', this.wishlist);
+
+    this.wishlist.next(currentWishlist); 
+    console.log('Wishlist:', currentWishlist);
   }
 
   isInCart(bookId: string): boolean {
-    return this.cart.some((item) => item._id === bookId);
+    return this.cart.getValue().some((item) => item._id === bookId);
   }
 
   isInWishlist(bookId: string): boolean {
-    return this.wishlist.some((item) => item._id === bookId);
+    return this.wishlist.getValue().some((item) => item._id === bookId);
   }
 
-  getCart(): any[] {
-    return this.cart;
+  getCart() {
+    return this.cart.asObservable();
   }
 
-  getWishlist(): any[] {
-    return this.wishlist;
+  getWishlist() {
+    return this.wishlist.asObservable();
   }
 }
