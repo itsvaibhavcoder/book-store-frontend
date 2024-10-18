@@ -22,3 +22,22 @@ export class BookListComponent implements OnInit {
   }
 
 }
+
+// import { Component, OnInit } from '@angular/core';
+// import { BookSharedService } from '../services/book-shared.service';
+
+// @Component({
+//   selector: 'app-book-list',
+//   templateUrl: './book-list.component.html',
+//   styleUrls: ['./book-list.component.scss'],
+// })
+// export class BookListComponent implements OnInit {
+//   books: any[] = [];
+
+//   constructor(private bookSharedService: BookSharedService) {}
+
+//   ngOnInit(): void {
+//     // Fetch the book list from BookSharedService
+//     this.books = this.bookSharedService.getBookList();
+//   }
+// }
