@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../services/user-service/user.service';
 import { Router } from '@angular/router';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-login-signup',
   styleUrls: ['./login-signup.component.scss'],
@@ -14,7 +14,7 @@ export class LoginSignupComponent {
   submitted = false;
   isLoginForm = true;
 
-  constructor(private fb: FormBuilder,private router: Router,private userService: UserService) {
+  constructor(private fb: FormBuilder,private router: Router,private userService: UserService, private dialogRef: MatDialogRef<LoginSignupComponent>) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -51,7 +51,8 @@ export class LoginSignupComponent {
         next: (res:any)=>{
           console.log(res);
           localStorage.setItem('accessToken', res?.data?.generatedToken);
-          this.router.navigate(['/books']);
+          this.dialogRef.close();
+          // this.router.navigate(['/books']);
         },
         error: (err)=>{
           console.log(err);
