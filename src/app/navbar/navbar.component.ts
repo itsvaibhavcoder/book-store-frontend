@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookSharedService } from '../services/book-shared.service';
-import { BookService } from '../services/book.service';
+import { BookService } from '../services/book-service/book.service';
 import { CartWishlistService } from '../services/cartwishlist.service';
 import { Router } from '@angular/router';
 @Component({
@@ -17,11 +17,13 @@ export class NavbarComponent implements OnInit {
       this.cartItems = cart;
       console.log('Cart Items: ', this.cartItems);
     });
-
-    this.bookService.getBooks().subscribe((books) => {
-      this.bookSharedService.setBookList(books); 
-      console.log("Books in navbar: ", books);
-    });
+    
+    //Commnted code 
+    
+    // this.bookService.getBooks().subscribe((books) => {
+    //   this.bookSharedService.setBookList(books); 
+    //   console.log("Books in navbar: ", books);
+    // });
   }
   goToCart(): void {
     this.router.navigate(['/cart']);
