@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="left-section">
       <img src="../../assets/book-store-login.png" alt="Login Image" />
       <h3>ONLINE BOOK SHOPPING</h3>
@@ -52,6 +52,77 @@
           <div class="button-group">
             <button mat-flat-button color="primary">Sign Up</button>
           </div>
+        </ng-container>
+      </mat-card>
+    </div>
+  </div>
+   -->
+
+
+   <div class="container">
+    <div class="left-section">
+      <img src="../../assets/book-store-login.png" alt="Login Illustration">
+      <h3>ONLINE BOOK SHOPPING</h3>
+    </div>
+
+    <div class="right-section">
+      <mat-card>
+        <div class="form-header">
+          <a (click)="toggleForm('login')" [class.active]="isLoginForm">Login</a>
+          <a class="signup" (click)="toggleForm('signup')" [class.active]="!isLoginForm">Signup</a>
+        </div>
+  
+        <ng-container *ngIf="isLoginForm">
+          <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required />
+              <mat-error *ngIf="loginControls['email'].invalid && submitted">Invalid Email</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" required />
+              <mat-error *ngIf="loginControls['password'].invalid && submitted">Invalid Password</mat-error>
+            </mat-form-field>
+  
+            <div class="button-group">
+              <button mat-raised-button color="primary" type="submit" class="mat-flat-button">Login</button>
+            </div>
+          </form>
+        </ng-container>
+  
+  
+        <ng-container *ngIf="!isLoginForm">
+          <form [formGroup]="signupForm" (ngSubmit)="handleSignup()">
+            <mat-form-field class="full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" required />
+              <mat-error *ngIf="signupControls['firstName'].invalid && submitted">First Name is required</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" required />
+              <mat-error *ngIf="signupControls['lastName'].invalid && submitted">Last Name is required</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required />
+              <mat-error *ngIf="signupControls['email'].invalid && submitted">Invalid Email</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" required />
+              <mat-error *ngIf="signupControls['password'].invalid && submitted">Invalid Password</mat-error>
+            </mat-form-field>
+  
+            <div class="button-group">
+              <button mat-raised-button color="primary" type="submit" class="mat-flat-button">Sign Up</button>
+            </div>
+          </form>
         </ng-container>
       </mat-card>
     </div>
