@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CartWishlistService } from '../services/cartwishlist.service';
 import { BookSharedService } from '../services/book-shared.service';
 import { CartService } from '../services/cart-service/cart.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { LoginSignupComponent } from '../login-signup/login-signup.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -31,7 +32,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartWishlistService: CartWishlistService,
     private bookSharedService: BookSharedService,
-    private cartService: CartService
+    private cartService: CartService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -89,7 +91,7 @@ export class CartComponent implements OnInit {
     });
   }
 
-
+  
   decrementQuantity(): void {
     if (this.quantityToBuy > 1) {
       this.quantityToBuy--;
@@ -128,10 +130,34 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder(): void {
-    console.log('Placing order...');
-    this.toggleCart();
-    this.toggleCustomerDetails();
+    const accessToken = localStorage.getItem('accessToken');
+    if(accessToken){
+      //User is logged in
+      this.toggleCustomerDetails();
+    }
+    else{
+      this.openLoginDialog();
+    }
+    // console.log('Placing order...');
+    // this.toggleCart();
+    // this.toggleCustomerDetails();
   }
+
+  openLoginDialog(){
+     const dialogRef = this.dialog.open(LoginSignupComponent, {
+      width: '700px',
+     
+     });
+
+     dialogRef.afterClosed().subscribe(result=>{
+      const accessToken = localStorage.getItem('accessToken');
+      if(accessToken){
+        this.toggleCustomerDetails();
+      }
+     });
+  }
+
+  
 
   continueToSummary(): void {
     console.log('Continuing to order summary...');
