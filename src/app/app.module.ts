@@ -25,6 +25,8 @@ import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { LoginSignupComponent } from './login-signup/login-signup.component';
     MatBadgeModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
