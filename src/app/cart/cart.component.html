@@ -1,151 +1,6 @@
-<!-- <div>
-  <button (click)="toggleCart()">Toggle Cart</button>
-
-  <div *ngIf="isCartVisible" id="cart-container">
-    <h2>Your Cart</h2>
-    <div *ngFor="let item of cartItems" class="cart-item">
-      <div class="book-image-container">
-        <img [src]="item.bookImage" alt="{{ item.title }}" class="book-image" />
-      </div>
-      <div class="book-details">
-        <h3>{{ item.bookName }}</h3>
-        <h4>by {{ item.author }}</h4>
-
-        <div class="book-price">
-          <strong>Rs. {{ item.price }}</strong>
-        </div>
-
-        <div class="book-discount-price">
-          <strong>Rs. {{ item.discountPrice }}</strong>
-        </div>
-
-        <div class="action-container">
-          <div class="quantity-container">
-            <button (click)="decrementQuantity()" mat-icon-button color="primary" class="quantity-btn">
-              <mat-icon>remove</mat-icon>
-            </button>
-            <span class="quantity">{{ item.quantityToBuy }}</span>
-            <button (click)="incrementQuantity()" mat-icon-button color="primary" class="quantity-btn">
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
-          <button mat-button color="warn" class="remove-btn">Remove</button>
-        </div>
-
-        <button
-          mat-raised-button
-          color="primary"
-          class="place-order-btn"
-          (click)="toggleAddressDetails(item)"
-        >
-          Place Order
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <button (click)="toggleCustomerDetails()">Toggle Customer Details</button>
-
-  <div *ngIf="isCustomerDetailsVisible" id="customer-details-container">
-    <h3>Customer Details</h3>
-
-    <div class="customer-details-input-container">
-   
-      <div class="input-row">
-        <div class="input-group">
-          <label>Full Name</label>
-          <input type="text" placeholder="Full Name" />
-        </div>
-        <div class="input-group">
-          <label>Mobile Number</label>
-          <input type="text" placeholder="Mobile Number" />
-        </div>
-      </div>
-
-
-      <div class="address-selection">
-        <label>
-          <input type="checkbox" [(ngModel)]="isWorkAddressSelected" />
-          Use Work Address
-        </label>
-        <label>
-          <input type="checkbox" [(ngModel)]="isHomeAddressSelected" />
-          Use Home Address
-        </label>
-      </div>
-      <div *ngIf="isWorkAddressSelected" class="address-container">
-        <h4>Work Address</h4>
-        <div class="address">
-          <label>Address</label>
-          <textarea placeholder="Work Address..."></textarea>
-        </div>
-        <div class="input-row">
-          <div class="input-group">
-            <label>City / Town</label>
-            <input type="text" placeholder="City or Town" />
-          </div>
-          <div class="input-group">
-            <label>State</label>
-            <input type="text" placeholder="State" />
-          </div>
-        </div>
-      </div>
-
-
-      <div *ngIf="isHomeAddressSelected" class="address-container">
-        <h4>Home Address</h4>
-        <label>Address</label>
-        <textarea placeholder="Home Address..."></textarea>
-        <div class="input-row">
-          <div class="input-group">
-            <label>City / Town</label>
-            <input type="text" placeholder="City or Town" />
-          </div>
-          <div class="input-group">
-            <label>State</label>
-            <input type="text" placeholder="State" />
-          </div>
-        </div>
-      </div>
-
-      <button class="order-summary-btn">Order Summary</button>
-    </div>
-  </div>
-
-  <button (click)="toggleOrderSummary()">Toggle Order Summary</button>
-
-  <div *ngIf="isOrderSummaryVisible" id="order-summary-container">
-    
-    <div class="book-image-container">
-      <h3>Order Summary</h3>
-      <img src="../../assets//atomic habit.jpeg" alt="image" class="book-image" />
-    </div>
-    <div class="book-details">
-      <h3>Atomic Habit</h3>
-      <h4>by buthor</h4>
-
-      <div class="book-price">
-        <strong>Rs. 200</strong>
-      </div>
-
-      <div class="book-discount-price">
-        <strong>Rs. 100</strong>
-      </div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="place-order-btn"
-      >
-        Checkout
-      </button>
-    </div>
-  </div>
-</div> -->
-
-
-<div id="cart-container" *ngIf="isCartVisible">
+<!-- <div id="cart-container" *ngIf="isCartVisible">
   <h2>Your Cart</h2>
-  <div *ngFor="let item of cartItems" class="cart-item">
+  <div *ngFor="let item of cartBooks" class="cart-item">
     <div class="book-image-container">
       <img [src]="item.bookImage" alt="{{ item.title }}" class="book-image" />
     </div>
@@ -171,7 +26,287 @@
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <button mat-button color="warn" class="remove-btn">Remove</button>
+        <button (click)="removeItem()"
+        mat-button color="warn" class="remove-btn">Remove</button>
+      </div>
+    </div>
+  </div>
+  <button
+        mat-raised-button
+        color="primary"
+        class="place-order-btn"
+        (click)="placeOrder()"
+      >
+        PLACE ORDER
+      </button>
+</div> 
+
+<div *ngIf="isCustomerDetailsVisible" id="customer-details-container">
+  <h3>Customer Details</h3>
+
+  <div class="customer-details-input-container">
+    <div class="input-row">
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Full Name" />
+      </div>
+      <div class="input-group">
+        <label>Mobile Number</label>
+        <input type="text" placeholder="Mobile Number" />
+      </div>
+    </div>
+
+    <div class="address-selection">
+      <label>
+        <input type="checkbox" [(ngModel)]="isWorkAddressSelected" />
+        Use Work Address
+      </label>
+      <label>
+        <input type="checkbox" [(ngModel)]="isHomeAddressSelected" />
+        Use Home Address
+      </label>
+    </div>
+
+    <div *ngIf="isWorkAddressSelected" class="address-container">
+      <h4>Work Address</h4>
+      <div class="address">
+        <label>Address</label>
+        <textarea placeholder="Work Address..."></textarea>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+          <label>City / Town</label>
+          <input type="text" placeholder="City or Town" />
+        </div>
+        <div class="input-group">
+          <label>State</label>
+          <input type="text" placeholder="State" />
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isHomeAddressSelected" class="address-container">
+      <h4>Home Address</h4>
+      <div class="address">
+        <label>Address</label>
+        <textarea placeholder="Home Address..."></textarea>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label>City / Town</label>
+          <input type="text" placeholder="City or Town" />
+        </div>
+        <div class="input-group">
+          <label>State</label>
+          <input type="text" placeholder="State" />
+        </div>
+      </div>
+    </div>
+
+    <button class="order-summary-btn" (click)="toggleOrderSummary()">CONTINUE</button>
+  </div>
+</div>
+
+<div *ngIf="isOrderSummaryVisible" id="order-summary-container">
+  <div class="book-image-container-order-summary">
+    <h3>Order Summary</h3>
+    <img src="../../assets/atomic-habit.jpeg" alt="image" class="book-image" />
+  </div>
+  <div class="book-details-order-summary">
+    <h3>Atomic Habit</h3>
+    <h4>by Author</h4>
+
+    <div class="book-price">
+      <strong>Rs. 200</strong>
+    </div>
+
+    <div class="book-discount-price">
+      <strong>Rs. 100</strong>
+    </div>
+
+    <button mat-raised-button color="primary" class="place-order-btn">CHECKOUT</button>
+  </div>
+</div> -->
+
+
+<div id="cart-container" *ngIf="isCartVisible">
+  <h2>Your Cart</h2>
+  <div *ngFor="let item of cartBooks" class="cart-item">
+    <div class="book-image-container">
+      <img [src]="item.bookImage" alt="{{ item.title }}" class="book-image" />
+    </div>
+    <div class="book-details">
+      <h3>{{ item.bookName }}</h3>
+      <h4>by {{ item.author }}</h4>
+
+      <div class="book-price">
+        <strong>Rs. {{ item.price }}</strong>
+      </div>
+
+      <div class="book-discount-price">
+        <strong>Rs. {{ item.discountPrice }}</strong>
+      </div>
+
+      <div class="action-container">
+        <div class="quantity-container">
+          <button (click)="decrementQauntityInCart(item._id)" mat-icon-button color="primary" class="quantity-btn">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span class="quantity">{{ item.quantityInCart }}</span>
+          <button (click)="incrementCartQuantityInCart(item._id)" mat-icon-button color="primary" class="quantity-btn">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <button (click)="removeItemFromCart(item._id)"
+        mat-button color="warn" class="remove-btn">Remove</button>
+      </div>
+    </div>
+  </div>
+  <button
+        mat-raised-button
+        color="primary"
+        class="place-order-btn"
+        (click)="placeOrder()"
+      >
+        PLACE ORDER
+      </button>
+</div> 
+
+<div *ngIf="isCustomerDetailsVisible" id="customer-details-container">
+  <h3>Customer Details</h3>
+
+  <div class="customer-details-input-container">
+    <div class="input-row">
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Full Name" />
+      </div>
+      <div class="input-group">
+        <label>Mobile Number</label>
+        <input type="text" placeholder="Mobile Number" />
+      </div>
+    </div>
+
+    <div class="address-selection">
+      <label>
+        <input type="checkbox" [(ngModel)]="isWorkAddressSelected" />
+        Use Work Address
+      </label>
+      <label>
+        <input type="checkbox" [(ngModel)]="isHomeAddressSelected" />
+        Use Home Address
+      </label>
+    </div>
+
+    <div *ngIf="isWorkAddressSelected" class="address-container">
+      <h4>Work Address</h4>
+      <div class="address">
+        <label>Address</label>
+        <textarea placeholder="Work Address..."></textarea>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+          <label>City / Town</label>
+          <input type="text" placeholder="City or Town" />
+        </div>
+        <div class="input-group">
+          <label>State</label>
+          <input type="text" placeholder="State" />
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isHomeAddressSelected" class="address-container">
+      <h4>Home Address</h4>
+      <div class="address">
+        <label>Address</label>
+        <textarea placeholder="Home Address..."></textarea>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label>City / Town</label>
+          <input type="text" placeholder="City or Town" />
+        </div>
+        <div class="input-group">
+          <label>State</label>
+          <input type="text" placeholder="State" />
+        </div>
+      </div>
+    </div>
+
+    <button class="order-summary-btn" (click)="toggleOrderSummary()">CONTINUE</button>
+  </div>
+</div>
+
+<div *ngIf="isOrderSummaryVisible" id="order-summary-container">
+  <div class="book-image-container-order-summary">
+    <h3>Order Summary</h3>
+    <img src="../../assets/atomic-habit.jpeg" alt="image" class="book-image" />
+  </div>
+  <div class="book-details-order-summary">
+    <h3>Atomic Habit</h3>
+    <h4>by Author</h4>
+
+    <div class="book-price">
+      <strong>Rs. 200</strong>
+    </div>
+
+    <div class="book-discount-price">
+      <strong>Rs. 100</strong>
+    </div>
+
+    <button mat-raised-button color="primary" class="place-order-btn">CHECKOUT</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- for logged in user  -->
+
+<!-- <div id="cart-container" *ngIf="isCartVisible">
+  <h2>Your Cart</h2>
+  <div *ngFor="let item of cartItemsList" class="cart-item">
+    <div class="book-image-container">
+      <img [src]="item.bookImage" alt="{{ item.title }}" class="book-image" />
+    </div>
+    <div class="book-details">
+      <h3>{{ item.bookName }}</h3>
+      <h4>by {{ item.author }}</h4>
+
+      <div class="book-price">
+        <strong>Rs. {{ item.price }}</strong>
+      </div>
+
+      <div class="book-discount-price">
+        <strong>Rs. {{ item.discountPrice }}</strong>
+      </div>
+
+      <div class="action-container">
+        <div class="quantity-container">
+          <button (click)="decrementQuantity()" mat-icon-button color="primary" class="quantity-btn">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span class="quantity">{{ item.quantityToBuy }}</span>
+          <button (click)="incrementQuantity()" mat-icon-button color="primary" class="quantity-btn">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <button (click)="removeItem(); removeItemFromCart()"
+        mat-button color="warn" class="remove-btn">Remove</button>
       </div>
 
       <button
@@ -180,7 +315,7 @@
         class="place-order-btn"
         (click)="placeOrder()"
       >
-        Place Order
+        PLACE ORDER
       </button>
     </div>
   </div>
@@ -232,8 +367,11 @@
 
     <div *ngIf="isHomeAddressSelected" class="address-container">
       <h4>Home Address</h4>
-      <label>Address</label>
-      <textarea placeholder="Home Address..."></textarea>
+      <div class="address">
+        <label>Address</label>
+        <textarea placeholder="Home Address..."></textarea>
+      </div>
+      
       <div class="input-row">
         <div class="input-group">
           <label>City / Town</label>
@@ -246,16 +384,16 @@
       </div>
     </div>
 
-    <button class="order-summary-btn" (click)="toggleOrderSummary()">Order Summary</button>
+    <button class="order-summary-btn" (click)="toggleOrderSummary()">CONTINUE</button>
   </div>
-</div>
+</div> -->
 
-<div *ngIf="isOrderSummaryVisible" id="order-summary-container">
-  <div class="book-image-container">
+<!-- <div *ngIf="isOrderSummaryVisible" id="order-summary-container">
+  <div class="book-image-container-order-summary">
     <h3>Order Summary</h3>
-    <img src="../../assets/atomic-habit.jpeg" alt="image" class="book-image" />
+    <img src="../../assets//atomic habit.jpeg" alt="image" class="book-image" />
   </div>
-  <div class="book-details">
+  <div class="book-details-order-summary">
     <h3>Atomic Habit</h3>
     <h4>by Author</h4>
 
@@ -267,6 +405,9 @@
       <strong>Rs. 100</strong>
     </div>
 
-    <button mat-raised-button color="primary" class="place-order-btn">Checkout</button>
+    <button mat-raised-button color="primary" class="place-order-btn">CHECKOUT</button>
   </div>
-</div>
+</div> 
+
+
+ -->
