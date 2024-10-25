@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .left-section {
+    width: 460px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 358px;
+    border-radius: 6px;
+    opacity: 1;
+    border: 1px solid #e4e4e4;
+    flex-direction: column;
+  }
+  
+  h3 {
+    margin-top: 0px;
+    font-weight: bold;
+    margin-right: 30px;
+  }
+  
+  .left-section img {
+    max-width: 100%;
+    height: 271px;
+    border-radius: 50%;
+  }
+  
+  .right-section {
+    width: 389px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 5px 15px #00000029;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    opacity: 1;
+    margin-right: 36px;
+    z-index: 2;
+  }
+  
+  mat-card {
+    width: 100%;
+    height: auto;
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .signup {
+    margin-left: 76px;
+  }
+  
+  .form-header a {
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #3f51b5;
+  }
+  
+  .form-header a.active {
+    color: #a03037;
+  }
+  
+  mat-form-field.full-width {
+    width: 73%;
+    margin-bottom: 15px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  button.forget-password {
+    color: #3f51b5;
+    text-transform: none;
+    margin-right: 3px;
+  }
+  
+  .mat-flat-button {
+    width: 60%;
+    background-color: #a03037;
+  }

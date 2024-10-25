@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="left-section">
+        <img src="../../assets/book-store-login.png" alt="Login Illustration">
+        <h3>ONLINE BOOK SHOPPING</h3>
+      </div>
+    <div class="right-section">
+        <h3>Admin Sign Up</h3>
+      <mat-card>
+        <form [formGroup]="signupForm" (ngSubmit)="handleSignup()">
+            <mat-form-field class="full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" required />
+              <mat-error *ngIf="signupControls['firstName'].invalid && submitted">First Name is required</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" required />
+              <mat-error *ngIf="signupControls['lastName'].invalid && submitted">Last Name is required</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required />
+              <mat-error *ngIf="signupControls['email'].invalid && submitted">Invalid Email</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" required />
+              <mat-error *ngIf="signupControls['password'].invalid && submitted">Invalid Password</mat-error>
+            </mat-form-field>
+        
+            <div class="button-group">
+              <button mat-raised-button color="primary" type="submit" class="mat-flat-button">Sign Up</button>
+            </div>
+          </form>
+      </mat-card>
+    </div>
+</div>
